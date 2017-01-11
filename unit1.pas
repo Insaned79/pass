@@ -10,18 +10,18 @@ uses
 
 type
 
-  { TForm1 }
+  { TMainForm }
 
-  TForm1 = class(TForm)
+  TMainForm = class(TForm)
     Edit1: TEdit;
     FloatSpinEdit1: TFloatSpinEdit;
-    Label1: TLabel;
-    Label2: TLabel;
+    ExitButton: TLabel;
+    GenerateButton: TLabel;
     Label3: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Label1Click(Sender: TObject);
-    procedure Label2Click(Sender: TObject);
+    procedure ExitButtonClick(Sender: TObject);
+    procedure GenerateButtonClick(Sender: TObject);
     procedure Label4Click(Sender: TObject);
   private
     { private declarations }
@@ -30,30 +30,30 @@ type
   end;
 
 var
-  Form1: TForm1;
+  MainForm: TMainForm;
 
 implementation
 
 {$R *.lfm}
 
-{ TForm1 }
+{ TMainForm }
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TMainForm.Button1Click(Sender: TObject);
 begin
-  label1.Caption:='Привет мир';
+  ExitButton.Caption:='Привет мир';
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TMainForm.FormCreate(Sender: TObject);
 begin
   edit1.text:='';
 end;
 
-procedure TForm1.Label1Click(Sender: TObject);
+procedure TMainForm.ExitButtonClick(Sender: TObject);
 begin
   halt(0);
 end;
 
-procedure TForm1.Label2Click(Sender: TObject);
+procedure TMainForm.GenerateButtonClick(Sender: TObject);
 var
   sep,gl,sl,s: string;
   k,i: integer;
@@ -75,7 +75,7 @@ begin
 
 end;
 
-procedure TForm1.Label4Click(Sender: TObject);
+procedure TMainForm.Label4Click(Sender: TObject);
 begin
 
 end;

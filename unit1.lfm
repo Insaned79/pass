@@ -1,7 +1,7 @@
-object Form1: TForm1
-  Left = 1229
+object MainForm: TMainForm
+  Left = 738
   Height = 174
-  Top = 338
+  Top = 337
   Width = 320
   BorderStyle = bsDialog
   Caption = 'Insaned password generator'
@@ -25,9 +25,8 @@ object Form1: TForm1
     ReadOnly = True
     TabStop = False
     TabOrder = 0
-    Text = 'Edit1'
   end
-  object Label1: TLabel
+  object ExitButton: TLabel
     Cursor = crHandPoint
     Left = 271
     Height = 25
@@ -39,9 +38,9 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
-    OnClick = Label1Click
+    OnClick = ExitButtonClick
   end
-  object Label2: TLabel
+  object GenerateButton: TLabel
     Cursor = crHandPoint
     Left = 13
     Height = 25
@@ -53,7 +52,7 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
-    OnClick = Label2Click
+    OnClick = GenerateButtonClick
   end
   object Label3: TLabel
     Left = 16
