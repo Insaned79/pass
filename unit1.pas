@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Spin, ComCtrls, ExtCtrls,md5, Types;
+  Spin, ComCtrls, ExtCtrls,md5, Types,LazUTF8;
 
 type
 
@@ -61,10 +61,24 @@ begin
     Result := Result + IntToHex(a[i], 1);
 end;
 
+function trim(s: UTF8String): ansistring;
+
+begin
+
+if length(s)>0 then
+try
+   while s[1]=' ' do if length(s)>0 then delete (s,1,1);
+   while s[length(s)]=' ' do  if length(s)>0 then delete (s,length(s),1);
+except
+
+end;
+result:=s;
+
+end;
 
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
-  ExitButton.Caption:='Привет мир';
+
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -104,13 +118,12 @@ end
 else
 //from master password generation
 
-s:=master.Text+site.Text+username.Text;
-edit2.Text:=Get_md5hash(s);
-
 begin
+  s:=trim(master.Text)+trim(utf8uppercase(site.Text))+trim(utf8uppercase(username.Text));
+  edit2.Text:=Get_md5hash(s);
 end;
 
- // label1.Caption:=Get_md5hash(s);
+
 end;
 
 procedure TMainForm.Label4Click(Sender: TObject);
