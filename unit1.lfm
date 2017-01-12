@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Height = 269
   Top = 318
   Width = 369
-  BorderStyle = bsDialog
+  BorderStyle = bsSingle
   Caption = 'Insaned password generator'
   ClientHeight = 269
   ClientWidth = 369

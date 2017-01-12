@@ -39,6 +39,7 @@ type
     procedure TabSheet2ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
     procedure ToggleBox1Change(Sender: TObject);
+    procedure TrayIcon1Click(Sender: TObject);
     procedure usernameChange(Sender: TObject);
   private
     { private declarations }
@@ -208,6 +209,11 @@ begin
 if togglebox1.Checked then  master.PasswordChar:='*'
    else master.PasswordChar:=#0;
 inif.WriteBool('Main','Asterisk',togglebox1.Checked);
+
+end;
+
+procedure TMainForm.TrayIcon1Click(Sender: TObject);
+begin
 
 end;
 
