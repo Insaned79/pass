@@ -1,13 +1,13 @@
 object MainForm: TMainForm
-  Left = 738
+  Left = 1102
   Height = 174
-  Top = 337
+  Top = 320
   Width = 320
   BorderStyle = bsDialog
   Caption = 'Insaned password generator'
   ClientHeight = 174
   ClientWidth = 320
-  Color = clBlack
+  Color = clForm
   DragMode = dmAutomatic
   Font.Color = clBlack
   OnCreate = FormCreate
@@ -18,8 +18,7 @@ object MainForm: TMainForm
     Height = 33
     Top = 24
     Width = 288
-    Color = clBlack
-    Font.Color = clGreen
+    Font.Color = clWindowText
     Font.Height = -19
     ParentFont = False
     ReadOnly = True
@@ -60,7 +59,7 @@ object MainForm: TMainForm
     Top = 88
     Width = 83
     Caption = 'Length (words):'
-    Font.Color = clGreen
+    Font.Color = clWindowText
     ParentColor = False
     ParentFont = False
   end
@@ -69,9 +68,9 @@ object MainForm: TMainForm
     Height = 33
     Top = 80
     Width = 51
-    Color = clBlack
+    Color = clNone
     DecimalPlaces = 0
-    Font.Color = clGreen
+    Font.Color = clWindowText
     Font.Height = -19
     Increment = 1
     MaxValue = 5
