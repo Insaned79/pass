@@ -147,6 +147,7 @@ procedure TMainForm.GenerateButtonClick(Sender: TObject);
 var
   sep,gl,sl,s: string;
   k,i: integer;
+
 begin
 if mainform.PageControl1.TabIndex=0 then
 begin
@@ -170,8 +171,12 @@ else
 //from master password generation
 
 begin
+
+
   s:=trim(master.Text)+trim(utf8uppercase(site.Text))+trim(utf8uppercase(username.Text));
   edit2.Text:=Get_md5hash(s);
+
+
 end;
 
 
