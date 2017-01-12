@@ -1,83 +1,184 @@
 object MainForm: TMainForm
   Left = 1102
-  Height = 174
-  Top = 320
-  Width = 320
+  Height = 269
+  Top = 318
+  Width = 358
   BorderStyle = bsDialog
   Caption = 'Insaned password generator'
-  ClientHeight = 174
-  ClientWidth = 320
+  ClientHeight = 269
+  ClientWidth = 358
   Color = clForm
   DragMode = dmAutomatic
   Font.Color = clBlack
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '1.6.2.0'
-  object Edit1: TEdit
-    Left = 16
-    Height = 33
-    Top = 24
-    Width = 288
-    Font.Color = clWindowText
-    Font.Height = -19
-    ParentFont = False
-    ReadOnly = True
-    TabStop = False
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 200
+    Top = 0
+    Width = 358
+    ActivePage = TabSheet2
+    Align = alTop
+    TabIndex = 1
     TabOrder = 0
+    OnChange = PageControl1Change
+    object TabSheet1: TTabSheet
+      Caption = 'Phonetic'
+      ClientHeight = 172
+      ClientWidth = 350
+      object Edit1: TEdit
+        Left = 0
+        Height = 33
+        Top = 24
+        Width = 344
+        Font.Color = clWindowText
+        Font.Height = -19
+        ParentFont = False
+        ReadOnly = True
+        TabStop = False
+        TabOrder = 0
+      end
+      object Label3: TLabel
+        Left = 16
+        Height = 15
+        Top = 88
+        Width = 83
+        Caption = 'Length (words):'
+        Font.Color = clWindowText
+        ParentColor = False
+        ParentFont = False
+      end
+      object FloatSpinEdit1: TFloatSpinEdit
+        Left = 109
+        Height = 33
+        Top = 80
+        Width = 51
+        Color = clNone
+        DecimalPlaces = 0
+        Font.Color = clWindowText
+        Font.Height = -19
+        Increment = 1
+        MaxValue = 5
+        MinValue = 1
+        ParentFont = False
+        TabStop = False
+        TabOrder = 1
+        Value = 2
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'From master'
+      ClientHeight = 172
+      ClientWidth = 350
+      OnContextPopup = TabSheet2ContextPopup
+      object Master: TLabeledEdit
+        Left = 96
+        Height = 23
+        Top = 10
+        Width = 248
+        EditLabel.AnchorSideTop.Control = Master
+        EditLabel.AnchorSideTop.Side = asrCenter
+        EditLabel.AnchorSideRight.Control = Master
+        EditLabel.AnchorSideBottom.Control = Master
+        EditLabel.AnchorSideBottom.Side = asrBottom
+        EditLabel.Left = 1
+        EditLabel.Height = 15
+        EditLabel.Top = 14
+        EditLabel.Width = 92
+        EditLabel.Caption = 'Master password:'
+        EditLabel.ParentColor = False
+        LabelPosition = lpLeft
+        TabOrder = 0
+      end
+      object Site: TLabeledEdit
+        Left = 96
+        Height = 23
+        Top = 42
+        Width = 248
+        EditLabel.AnchorSideTop.Control = Site
+        EditLabel.AnchorSideTop.Side = asrCenter
+        EditLabel.AnchorSideRight.Control = Site
+        EditLabel.AnchorSideBottom.Control = Site
+        EditLabel.AnchorSideBottom.Side = asrBottom
+        EditLabel.Left = 71
+        EditLabel.Height = 15
+        EditLabel.Top = 46
+        EditLabel.Width = 22
+        EditLabel.Caption = 'Site:'
+        EditLabel.ParentColor = False
+        LabelPosition = lpLeft
+        TabOrder = 1
+      end
+      object username: TLabeledEdit
+        Left = 96
+        Height = 23
+        Top = 74
+        Width = 248
+        EditLabel.AnchorSideTop.Control = username
+        EditLabel.AnchorSideTop.Side = asrCenter
+        EditLabel.AnchorSideRight.Control = username
+        EditLabel.AnchorSideBottom.Control = username
+        EditLabel.AnchorSideBottom.Side = asrBottom
+        EditLabel.Left = 37
+        EditLabel.Height = 15
+        EditLabel.Top = 78
+        EditLabel.Width = 56
+        EditLabel.Caption = 'Username:'
+        EditLabel.ParentColor = False
+        LabelPosition = lpLeft
+        TabOrder = 2
+      end
+      object Edit2: TEdit
+        Left = 2
+        Height = 33
+        Top = 120
+        Width = 344
+        Font.Color = clWindowText
+        Font.Height = -19
+        ParentFont = False
+        ReadOnly = True
+        TabStop = False
+        TabOrder = 3
+      end
+    end
   end
-  object ExitButton: TLabel
-    Cursor = crHandPoint
-    Left = 271
-    Height = 25
-    Top = 128
-    Width = 33
-    Caption = 'Exit'
-    Font.Color = clRed
-    Font.Height = -19
-    Font.Style = [fsBold]
-    ParentColor = False
-    ParentFont = False
-    OnClick = ExitButtonClick
-  end
-  object GenerateButton: TLabel
-    Cursor = crHandPoint
-    Left = 13
-    Height = 25
-    Top = 128
-    Width = 81
-    Caption = 'Generate'
-    Font.Color = clGreen
-    Font.Height = -19
-    Font.Style = [fsBold]
-    ParentColor = False
-    ParentFont = False
-    OnClick = GenerateButtonClick
-  end
-  object Label3: TLabel
-    Left = 16
-    Height = 15
-    Top = 88
-    Width = 83
-    Caption = 'Length (words):'
-    Font.Color = clWindowText
-    ParentColor = False
-    ParentFont = False
-  end
-  object FloatSpinEdit1: TFloatSpinEdit
-    Left = 109
-    Height = 33
-    Top = 80
-    Width = 51
-    Color = clNone
-    DecimalPlaces = 0
-    Font.Color = clWindowText
-    Font.Height = -19
-    Increment = 1
-    MaxValue = 5
-    MinValue = 1
-    ParentFont = False
-    TabStop = False
+  object Panel1: TPanel
+    Left = 0
+    Height = 69
+    Top = 200
+    Width = 358
+    Align = alClient
+    ClientHeight = 69
+    ClientWidth = 358
     TabOrder = 1
-    Value = 2
+    object GenerateButton: TLabel
+      Cursor = crHandPoint
+      Left = 8
+      Height = 25
+      Top = 25
+      Width = 81
+      Caption = 'Generate'
+      Font.Color = clGreen
+      Font.Height = -19
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      OnClick = GenerateButtonClick
+    end
+    object ExitButton: TLabel
+      Cursor = crHandPoint
+      Left = 304
+      Height = 25
+      Top = 25
+      Width = 33
+      Caption = 'Exit'
+      Font.Color = clRed
+      Font.Height = -19
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      OnClick = ExitButtonClick
+    end
   end
 end
