@@ -1,12 +1,12 @@
 object MainForm: TMainForm
-  Left = 1102
+  Left = 833
   Height = 269
-  Top = 318
-  Width = 369
+  Top = 146
+  Width = 385
   BorderStyle = bsSingle
   Caption = 'Insaned password generator'
   ClientHeight = 269
-  ClientWidth = 369
+  ClientWidth = 385
   Color = clForm
   DragMode = dmAutomatic
   Font.Color = clBlack
@@ -18,21 +18,21 @@ object MainForm: TMainForm
     Left = 0
     Height = 200
     Top = 0
-    Width = 369
-    ActivePage = TabSheet2
+    Width = 385
+    ActivePage = TabSheet1
     Align = alTop
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 0
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Phonetic'
-      ClientHeight = 172
-      ClientWidth = 361
+      ClientHeight = 165
+      ClientWidth = 379
       object Edit1: TEdit
         Left = 0
-        Height = 33
+        Height = 36
         Top = 24
-        Width = 355
+        Width = 376
         Font.Color = clWindowText
         Font.Height = -19
         ParentFont = False
@@ -42,9 +42,9 @@ object MainForm: TMainForm
       end
       object Label3: TLabel
         Left = 16
-        Height = 15
+        Height = 17
         Top = 88
-        Width = 83
+        Width = 86
         Caption = 'Length (words):'
         Font.Color = clWindowText
         ParentColor = False
@@ -52,7 +52,7 @@ object MainForm: TMainForm
       end
       object FloatSpinEdit1: TFloatSpinEdit
         Left = 109
-        Height = 33
+        Height = 36
         Top = 80
         Width = 51
         Color = clNone
@@ -71,12 +71,12 @@ object MainForm: TMainForm
     end
     object TabSheet2: TTabSheet
       Caption = 'From master'
-      ClientHeight = 172
-      ClientWidth = 361
+      ClientHeight = 165
+      ClientWidth = 379
       OnContextPopup = TabSheet2ContextPopup
       object Master: TLabeledEdit
-        Left = 96
-        Height = 23
+        Left = 107
+        Height = 27
         Top = 10
         Width = 216
         EchoMode = emPassword
@@ -85,10 +85,10 @@ object MainForm: TMainForm
         EditLabel.AnchorSideRight.Control = Master
         EditLabel.AnchorSideBottom.Control = Master
         EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 1
-        EditLabel.Height = 15
-        EditLabel.Top = 14
-        EditLabel.Width = 92
+        EditLabel.Left = 4
+        EditLabel.Height = 17
+        EditLabel.Top = 15
+        EditLabel.Width = 100
         EditLabel.Caption = 'Master password:'
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
@@ -96,19 +96,19 @@ object MainForm: TMainForm
         TabOrder = 0
       end
       object Site: TLabeledEdit
-        Left = 96
-        Height = 23
+        Left = 107
+        Height = 27
         Top = 42
-        Width = 248
+        Width = 256
         EditLabel.AnchorSideTop.Control = Site
         EditLabel.AnchorSideTop.Side = asrCenter
         EditLabel.AnchorSideRight.Control = Site
         EditLabel.AnchorSideBottom.Control = Site
         EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 71
-        EditLabel.Height = 15
-        EditLabel.Top = 46
-        EditLabel.Width = 22
+        EditLabel.Left = 80
+        EditLabel.Height = 17
+        EditLabel.Top = 47
+        EditLabel.Width = 24
         EditLabel.Caption = 'Site:'
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
@@ -116,19 +116,19 @@ object MainForm: TMainForm
         OnChange = SiteChange
       end
       object username: TLabeledEdit
-        Left = 96
-        Height = 23
+        Left = 107
+        Height = 27
         Top = 74
-        Width = 248
+        Width = 256
         EditLabel.AnchorSideTop.Control = username
         EditLabel.AnchorSideTop.Side = asrCenter
         EditLabel.AnchorSideRight.Control = username
         EditLabel.AnchorSideBottom.Control = username
         EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 37
-        EditLabel.Height = 15
-        EditLabel.Top = 78
-        EditLabel.Width = 56
+        EditLabel.Left = 42
+        EditLabel.Height = 17
+        EditLabel.Top = 79
+        EditLabel.Width = 62
         EditLabel.Caption = 'Username:'
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
@@ -137,9 +137,9 @@ object MainForm: TMainForm
       end
       object Edit2: TEdit
         Left = 1
-        Height = 33
+        Height = 36
         Top = 120
-        Width = 358
+        Width = 375
         Font.Color = clWindowText
         Font.Height = -19
         ParentFont = False
@@ -148,10 +148,10 @@ object MainForm: TMainForm
         TabOrder = 3
       end
       object ToggleBox1: TToggleBox
-        Left = 318
+        Left = 329
         Height = 23
         Top = 10
-        Width = 26
+        Width = 34
         Caption = '( * )'
         OnChange = ToggleBox1Change
         TabOrder = 4
@@ -162,17 +162,17 @@ object MainForm: TMainForm
     Left = 0
     Height = 69
     Top = 200
-    Width = 369
+    Width = 385
     Align = alClient
     ClientHeight = 69
-    ClientWidth = 369
+    ClientWidth = 385
     TabOrder = 1
     object GenerateButton: TLabel
       Cursor = crHandPoint
       Left = 8
-      Height = 25
+      Height = 26
       Top = 25
-      Width = 81
+      Width = 87
       Caption = 'Generate'
       Font.Color = clGreen
       Font.Height = -19
@@ -184,9 +184,9 @@ object MainForm: TMainForm
     object ExitButton: TLabel
       Cursor = crHandPoint
       Left = 323
-      Height = 25
+      Height = 26
       Top = 25
-      Width = 33
+      Width = 36
       Caption = 'Exit'
       Font.Color = clRed
       Font.Height = -19

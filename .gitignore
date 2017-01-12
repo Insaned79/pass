@@ -1,6 +1,8 @@
 *.dbg
 *.exe
 *.res
+*.bak
+passwords
 lib/
 backup/
 
