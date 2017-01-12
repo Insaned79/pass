@@ -2,14 +2,15 @@ object MainForm: TMainForm
   Left = 1102
   Height = 269
   Top = 318
-  Width = 358
+  Width = 362
   BorderStyle = bsDialog
   Caption = 'Insaned password generator'
   ClientHeight = 269
-  ClientWidth = 358
+  ClientWidth = 362
   Color = clForm
   DragMode = dmAutomatic
   Font.Color = clBlack
+  OnClose = FormClose
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '1.6.2.0'
@@ -17,7 +18,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 200
     Top = 0
-    Width = 358
+    Width = 362
     ActivePage = TabSheet2
     Align = alTop
     TabIndex = 1
@@ -61,6 +62,7 @@ object MainForm: TMainForm
         Increment = 1
         MaxValue = 5
         MinValue = 1
+        OnChange = FloatSpinEdit1Change
         ParentFont = False
         TabStop = False
         TabOrder = 1
@@ -70,13 +72,14 @@ object MainForm: TMainForm
     object TabSheet2: TTabSheet
       Caption = 'From master'
       ClientHeight = 172
-      ClientWidth = 350
+      ClientWidth = 354
       OnContextPopup = TabSheet2ContextPopup
       object Master: TLabeledEdit
         Left = 96
         Height = 23
         Top = 10
-        Width = 248
+        Width = 216
+        EchoMode = emPassword
         EditLabel.AnchorSideTop.Control = Master
         EditLabel.AnchorSideTop.Side = asrCenter
         EditLabel.AnchorSideRight.Control = Master
@@ -89,6 +92,7 @@ object MainForm: TMainForm
         EditLabel.Caption = 'Master password:'
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
+        PasswordChar = '*'
         TabOrder = 0
       end
       object Site: TLabeledEdit
@@ -109,6 +113,7 @@ object MainForm: TMainForm
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
         TabOrder = 1
+        OnChange = SiteChange
       end
       object username: TLabeledEdit
         Left = 96
@@ -128,6 +133,7 @@ object MainForm: TMainForm
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
         TabOrder = 2
+        OnChange = usernameChange
       end
       object Edit2: TEdit
         Left = 2
@@ -141,16 +147,25 @@ object MainForm: TMainForm
         TabStop = False
         TabOrder = 3
       end
+      object ToggleBox1: TToggleBox
+        Left = 318
+        Height = 23
+        Top = 10
+        Width = 26
+        Caption = '( * )'
+        OnChange = ToggleBox1Change
+        TabOrder = 4
+      end
     end
   end
   object Panel1: TPanel
     Left = 0
     Height = 69
     Top = 200
-    Width = 358
+    Width = 362
     Align = alClient
     ClientHeight = 69
-    ClientWidth = 358
+    ClientWidth = 362
     TabOrder = 1
     object GenerateButton: TLabel
       Cursor = crHandPoint

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Spin, ComCtrls, ExtCtrls,md5, Types,LazUTF8;
+  Spin, ComCtrls, ExtCtrls,md5, Types,LazUTF8,INIFiles;
 
 type
 
@@ -21,19 +21,25 @@ type
     Label3: TLabel;
     Master: TLabeledEdit;
     Site: TLabeledEdit;
+    ToggleBox1: TToggleBox;
     username: TLabeledEdit;
     PageControl1: TPageControl;
     Panel1: TPanel;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     procedure Button1Click(Sender: TObject);
+    procedure FloatSpinEdit1Change(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure ExitButtonClick(Sender: TObject);
     procedure GenerateButtonClick(Sender: TObject);
     procedure Label4Click(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
+    procedure SiteChange(Sender: TObject);
     procedure TabSheet2ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
+    procedure ToggleBox1Change(Sender: TObject);
+    procedure usernameChange(Sender: TObject);
   private
     { private declarations }
   public
@@ -42,6 +48,7 @@ type
 
 var
   MainForm: TMainForm;
+  IniF:TINIFile;
 
 implementation
 
@@ -79,12 +86,56 @@ end;
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
 
+
+end;
+
+procedure TMainForm.FloatSpinEdit1Change(Sender: TObject);
+begin
+  inif.WriteInteger('Main','Length', round(floatspinedit1.Value) );
+end;
+
+procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var
+  inifile: string;
+  f: textfile;
 begin
   edit1.text:='';
+  edit2.text:='';
   mainform.PageControl1.ActivePageIndex:=0;
+
+//inifile:=ExtractFileDir(paramstr(0));
+inifile:=GetAppConfigDir(False);
+inifile:=inifile+'settings.ini';
+
+
+try
+IF(FileExists(inifile))then
+    begin
+         Inif := TINIFile.Create(inifile);
+         //Writeln(INiF.ReadString('s1','Key1',''));
+    End
+else
+    begin
+      if not DirectoryExists(ExtractFileDir(inifile)) then CreateDir(ExtractFileDir(inifile));
+      AssignFile(f,inifile);
+      rewrite(f);
+      closefile(f);
+      Inif := TINIFile.Create(inifile);
+    end;
+site.Text:=inif.ReadString('Main','Site','');
+username.Text:=inif.ReadString('Main','Username','');
+floatspinedit1.Value:=inif.ReadInteger('Main','Length',2);
+togglebox1.Checked:=inif.ReadBool('Main','Asterisk',true);
+mainform.ToggleBox1Change(nil);
+except
+end;
+
+
 end;
 
 procedure TMainForm.ExitButtonClick(Sender: TObject);
@@ -136,10 +187,28 @@ begin
 
 end;
 
+procedure TMainForm.SiteChange(Sender: TObject);
+begin
+  inif.WriteString('Main','Site',site.Text);
+end;
+
 procedure TMainForm.TabSheet2ContextPopup(Sender: TObject; MousePos: TPoint;
   var Handled: Boolean);
 begin
 
+end;
+
+procedure TMainForm.ToggleBox1Change(Sender: TObject);
+begin
+if togglebox1.Checked then  master.PasswordChar:='*'
+   else master.PasswordChar:=#0;
+inif.WriteBool('Main','Asterisk',togglebox1.Checked);
+
+end;
+
+procedure TMainForm.usernameChange(Sender: TObject);
+begin
+inif.WriteString('Main','Username',username.Text);
 end;
 
 end.
