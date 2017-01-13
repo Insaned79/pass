@@ -26,11 +26,11 @@ object MainForm: TMainForm
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Phonetic'
-      ClientHeight = 165
-      ClientWidth = 379
+      ClientHeight = 172
+      ClientWidth = 377
       object Edit1: TEdit
         Left = 0
-        Height = 36
+        Height = 33
         Top = 24
         Width = 376
         Font.Color = clWindowText
@@ -42,9 +42,9 @@ object MainForm: TMainForm
       end
       object Label3: TLabel
         Left = 16
-        Height = 17
+        Height = 15
         Top = 88
-        Width = 86
+        Width = 83
         Caption = 'Length (words):'
         Font.Color = clWindowText
         ParentColor = False
@@ -52,7 +52,7 @@ object MainForm: TMainForm
       end
       object FloatSpinEdit1: TFloatSpinEdit
         Left = 109
-        Height = 36
+        Height = 33
         Top = 80
         Width = 51
         Color = clNone
@@ -169,10 +169,10 @@ object MainForm: TMainForm
     TabOrder = 1
     object GenerateButton: TLabel
       Cursor = crHandPoint
-      Left = 8
-      Height = 26
+      Left = 9
+      Height = 25
       Top = 25
-      Width = 87
+      Width = 81
       Caption = 'Generate'
       Font.Color = clGreen
       Font.Height = -19
@@ -184,9 +184,9 @@ object MainForm: TMainForm
     object ExitButton: TLabel
       Cursor = crHandPoint
       Left = 323
-      Height = 26
+      Height = 25
       Top = 25
-      Width = 36
+      Width = 33
       Caption = 'Exit'
       Font.Color = clRed
       Font.Height = -19
