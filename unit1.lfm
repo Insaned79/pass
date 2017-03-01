@@ -1,24 +1,24 @@
 object MainForm: TMainForm
-  Left = 833
-  Height = 269
-  Top = 146
-  Width = 385
+  Left = 566
+  Height = 294
+  Top = 213
+  Width = 427
   BorderStyle = bsSingle
   Caption = 'Insaned password generator'
-  ClientHeight = 269
-  ClientWidth = 385
+  ClientHeight = 294
+  ClientWidth = 427
   Color = clForm
   DragMode = dmAutomatic
   Font.Color = clBlack
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.6.2.0'
+  LCLVersion = '1.0.10.0'
   object PageControl1: TPageControl
     Left = 0
     Height = 200
     Top = 0
-    Width = 385
+    Width = 427
     ActivePage = TabSheet1
     Align = alTop
     TabIndex = 0
@@ -26,11 +26,11 @@ object MainForm: TMainForm
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Phonetic'
-      ClientHeight = 172
-      ClientWidth = 377
+      ClientHeight = 169
+      ClientWidth = 423
       object Edit1: TEdit
         Left = 0
-        Height = 33
+        Height = 32
         Top = 24
         Width = 376
         Font.Color = clWindowText
@@ -42,9 +42,9 @@ object MainForm: TMainForm
       end
       object Label3: TLabel
         Left = 16
-        Height = 15
+        Height = 18
         Top = 88
-        Width = 83
+        Width = 106
         Caption = 'Length (words):'
         Font.Color = clWindowText
         ParentColor = False
@@ -52,7 +52,7 @@ object MainForm: TMainForm
       end
       object FloatSpinEdit1: TFloatSpinEdit
         Left = 109
-        Height = 33
+        Height = 32
         Top = 80
         Width = 51
         Color = clNone
@@ -71,24 +71,24 @@ object MainForm: TMainForm
     end
     object TabSheet2: TTabSheet
       Caption = 'From master'
-      ClientHeight = 165
-      ClientWidth = 379
+      ClientHeight = 169
+      ClientWidth = 423
       OnContextPopup = TabSheet2ContextPopup
       object Master: TLabeledEdit
-        Left = 107
+        Left = 134
         Height = 27
         Top = 10
-        Width = 216
+        Width = 229
         EchoMode = emPassword
         EditLabel.AnchorSideTop.Control = Master
         EditLabel.AnchorSideTop.Side = asrCenter
         EditLabel.AnchorSideRight.Control = Master
         EditLabel.AnchorSideBottom.Control = Master
         EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 4
-        EditLabel.Height = 17
-        EditLabel.Top = 15
-        EditLabel.Width = 100
+        EditLabel.Left = 9
+        EditLabel.Height = 18
+        EditLabel.Top = 14
+        EditLabel.Width = 122
         EditLabel.Caption = 'Master password:'
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
@@ -105,10 +105,10 @@ object MainForm: TMainForm
         EditLabel.AnchorSideRight.Control = Site
         EditLabel.AnchorSideBottom.Control = Site
         EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 80
-        EditLabel.Height = 17
-        EditLabel.Top = 47
-        EditLabel.Width = 24
+        EditLabel.Left = 73
+        EditLabel.Height = 18
+        EditLabel.Top = 46
+        EditLabel.Width = 31
         EditLabel.Caption = 'Site:'
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
@@ -125,10 +125,10 @@ object MainForm: TMainForm
         EditLabel.AnchorSideRight.Control = username
         EditLabel.AnchorSideBottom.Control = username
         EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 42
-        EditLabel.Height = 17
-        EditLabel.Top = 79
-        EditLabel.Width = 62
+        EditLabel.Left = 31
+        EditLabel.Height = 18
+        EditLabel.Top = 78
+        EditLabel.Width = 73
         EditLabel.Caption = 'Username:'
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
@@ -137,7 +137,7 @@ object MainForm: TMainForm
       end
       object Edit2: TEdit
         Left = 1
-        Height = 36
+        Height = 32
         Top = 120
         Width = 375
         Font.Color = clWindowText
@@ -148,31 +148,77 @@ object MainForm: TMainForm
         TabOrder = 3
       end
       object ToggleBox1: TToggleBox
-        Left = 329
+        Left = 374
         Height = 23
-        Top = 10
+        Top = 11
         Width = 34
         Caption = '( * )'
         OnChange = ToggleBox1Change
         TabOrder = 4
       end
     end
+    object TabSheet3: TTabSheet
+      Caption = 'VipNet Password Generator'
+      ClientHeight = 169
+      ClientWidth = 423
+      object Button1: TButton
+        Left = 334
+        Height = 25
+        Top = 139
+        Width = 75
+        Caption = 'Generate'
+        OnClick = Button1Click
+        TabOrder = 0
+      end
+      object Edit3: TEdit
+        Left = 14
+        Height = 27
+        Top = 83
+        Width = 144
+        TabOrder = 1
+      end
+      object Edit4: TEdit
+        Left = 14
+        Height = 27
+        Top = 27
+        Width = 376
+        Color = clScrollBar
+        ReadOnly = True
+        TabOrder = 2
+      end
+      object Label1: TLabel
+        Left = 14
+        Height = 18
+        Top = 11
+        Width = 173
+        Caption = 'Фраза для запоминания'
+        ParentColor = False
+      end
+      object Label2: TLabel
+        Left = 14
+        Height = 18
+        Top = 67
+        Width = 197
+        Caption = 'Password (first 3 letter in EN)'
+        ParentColor = False
+      end
+    end
   end
   object Panel1: TPanel
     Left = 0
-    Height = 69
+    Height = 94
     Top = 200
-    Width = 385
+    Width = 427
     Align = alClient
-    ClientHeight = 69
-    ClientWidth = 385
+    ClientHeight = 94
+    ClientWidth = 427
     TabOrder = 1
     object GenerateButton: TLabel
       Cursor = crHandPoint
       Left = 9
-      Height = 25
+      Height = 23
       Top = 25
-      Width = 81
+      Width = 85
       Caption = 'Generate'
       Font.Color = clGreen
       Font.Height = -19
@@ -184,9 +230,9 @@ object MainForm: TMainForm
     object ExitButton: TLabel
       Cursor = crHandPoint
       Left = 323
-      Height = 25
+      Height = 23
       Top = 25
-      Width = 33
+      Width = 37
       Caption = 'Exit'
       Font.Color = clRed
       Font.Height = -19
