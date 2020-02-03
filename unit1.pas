@@ -13,7 +13,6 @@ type
   { TMainForm }
 
   TMainForm = class(TForm)
-    Button1: TButton;
     Edit1: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
@@ -276,18 +275,21 @@ end;
 
 procedure TMainForm.GenerateButtonClick(Sender: TObject);
 var
-  sep, gl, sl, s: string;
-  k, i: integer;
+  sep, gl, sl, s,passw,ruspassw: string;
+  k, i, d1,w1,w2,w3: integer;
+
 
 begin
-  if mainform.PageControl1.TabIndex = 0 then
-  begin
-    //Phonteic password generation
+     Randomize;
+  //if mainform.PageControl1.TabIndex = 0 then
+  case mainform.PageControl1.TabIndex of
+  //Phonteic password generation
+    0: begin
     gl := 'bdghklmnprstz';
     sl := 'aeiou';
     sep := '-=+!@#$%^&*1234567890~_';
     s := '';
-    Randomize;
+
     for k := 1 to round(floatspinedit1.Value) do
     begin
       for i := 1 to 4 do
@@ -298,18 +300,28 @@ begin
         s := s + sep[random(length(sep)) + 1];
     end;
     edit1.Text := s;
-  end
-  else
-    //from master password generation
-
-  begin
-
-    s := trim(master.Text) + trim(utf8uppercase(site.Text)) +
+  end;
+  //from master password generation
+  1: begin
+      s := trim(master.Text) + trim(utf8uppercase(site.Text)) +
       trim(utf8uppercase(username.Text));
-    edit2.Text := Get_md5hash(s);
+      edit2.Text := Get_md5hash(s);
 
   end;
+  // Vipnet way
+  2: begin
 
+       d1:=Random(phase_count);
+       w1:=Random(phase_count);
+       w2:=Random(phase_count);
+       w3:=Random(phase_count);
+       ruspassw:=  digit_mass[d1] + ' ' + word1_mass[w1] + ' ' + word2_mass[w2] + ' ' + word3_mass[w3];
+       Edit4.Text:=  ruspassw;
+       passw:= UTF8Copy(word1_mass[w1],1,3) + UTF8Copy(word2_mass[w2],1,3) + UTF8Copy(word3_mass[w3],1,3);
+       passw:=RusToLat(passw);
+       Edit3.Text:=digit_mass[d1]+passw;
+  end;
+  end;
 end;
 
 procedure TMainForm.Label4Click(Sender: TObject);

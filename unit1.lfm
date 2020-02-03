@@ -13,21 +13,21 @@ object MainForm: TMainForm
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.0.10.0'
+  LCLVersion = '1.8.2.0'
   object PageControl1: TPageControl
     Left = 0
     Height = 200
     Top = 0
     Width = 427
-    ActivePage = TabSheet1
+    ActivePage = TabSheet3
     Align = alTop
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 0
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Phonetic'
-      ClientHeight = 169
-      ClientWidth = 423
+      ClientHeight = 166
+      ClientWidth = 421
       object Edit1: TEdit
         Left = 0
         Height = 32
@@ -42,9 +42,9 @@ object MainForm: TMainForm
       end
       object Label3: TLabel
         Left = 16
-        Height = 18
+        Height = 16
         Top = 88
-        Width = 106
+        Width = 94
         Caption = 'Length (words):'
         Font.Color = clWindowText
         ParentColor = False
@@ -71,12 +71,12 @@ object MainForm: TMainForm
     end
     object TabSheet2: TTabSheet
       Caption = 'From master'
-      ClientHeight = 169
-      ClientWidth = 423
+      ClientHeight = 166
+      ClientWidth = 421
       OnContextPopup = TabSheet2ContextPopup
       object Master: TLabeledEdit
         Left = 134
-        Height = 27
+        Height = 26
         Top = 10
         Width = 229
         EchoMode = emPassword
@@ -85,10 +85,10 @@ object MainForm: TMainForm
         EditLabel.AnchorSideRight.Control = Master
         EditLabel.AnchorSideBottom.Control = Master
         EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 9
-        EditLabel.Height = 18
-        EditLabel.Top = 14
-        EditLabel.Width = 122
+        EditLabel.Left = 25
+        EditLabel.Height = 16
+        EditLabel.Top = 15
+        EditLabel.Width = 106
         EditLabel.Caption = 'Master password:'
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
@@ -97,7 +97,7 @@ object MainForm: TMainForm
       end
       object Site: TLabeledEdit
         Left = 107
-        Height = 27
+        Height = 26
         Top = 42
         Width = 256
         EditLabel.AnchorSideTop.Control = Site
@@ -105,10 +105,10 @@ object MainForm: TMainForm
         EditLabel.AnchorSideRight.Control = Site
         EditLabel.AnchorSideBottom.Control = Site
         EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 73
-        EditLabel.Height = 18
-        EditLabel.Top = 46
-        EditLabel.Width = 31
+        EditLabel.Left = 79
+        EditLabel.Height = 16
+        EditLabel.Top = 47
+        EditLabel.Width = 25
         EditLabel.Caption = 'Site:'
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
@@ -117,7 +117,7 @@ object MainForm: TMainForm
       end
       object username: TLabeledEdit
         Left = 107
-        Height = 27
+        Height = 26
         Top = 74
         Width = 256
         EditLabel.AnchorSideTop.Control = username
@@ -125,10 +125,10 @@ object MainForm: TMainForm
         EditLabel.AnchorSideRight.Control = username
         EditLabel.AnchorSideBottom.Control = username
         EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 31
-        EditLabel.Height = 18
-        EditLabel.Top = 78
-        EditLabel.Width = 73
+        EditLabel.Left = 41
+        EditLabel.Height = 16
+        EditLabel.Top = 79
+        EditLabel.Width = 63
         EditLabel.Caption = 'Username:'
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
@@ -159,46 +159,37 @@ object MainForm: TMainForm
     end
     object TabSheet3: TTabSheet
       Caption = 'VipNet Password Generator'
-      ClientHeight = 169
-      ClientWidth = 423
-      object Button1: TButton
-        Left = 334
-        Height = 25
-        Top = 139
-        Width = 75
-        Caption = 'Generate'
-        OnClick = Button1Click
-        TabOrder = 0
-      end
+      ClientHeight = 166
+      ClientWidth = 421
       object Edit3: TEdit
         Left = 14
-        Height = 27
+        Height = 26
         Top = 83
         Width = 144
-        TabOrder = 1
+        TabOrder = 0
       end
       object Edit4: TEdit
         Left = 14
-        Height = 27
+        Height = 26
         Top = 27
         Width = 376
         Color = clScrollBar
         ReadOnly = True
-        TabOrder = 2
+        TabOrder = 1
       end
       object Label1: TLabel
         Left = 14
-        Height = 18
+        Height = 16
         Top = 11
-        Width = 173
+        Width = 156
         Caption = 'Фраза для запоминания'
         ParentColor = False
       end
       object Label2: TLabel
         Left = 14
-        Height = 18
+        Height = 16
         Top = 67
-        Width = 197
+        Width = 176
         Caption = 'Password (first 3 letter in EN)'
         ParentColor = False
       end
@@ -216,9 +207,9 @@ object MainForm: TMainForm
     object GenerateButton: TLabel
       Cursor = crHandPoint
       Left = 9
-      Height = 23
+      Height = 22
       Top = 25
-      Width = 85
+      Width = 84
       Caption = 'Generate'
       Font.Color = clGreen
       Font.Height = -19
@@ -230,9 +221,9 @@ object MainForm: TMainForm
     object ExitButton: TLabel
       Cursor = crHandPoint
       Left = 323
-      Height = 23
+      Height = 22
       Top = 25
-      Width = 37
+      Width = 36
       Caption = 'Exit'
       Font.Color = clRed
       Font.Height = -19
