@@ -208,25 +208,11 @@ var
   a: string;
 begin
 
-  inipass := GetCurrentDir();
-  inipass := inipass + '/vipnetpass.ini';
+   inipass:=ExtractFileDir(paramstr(0));
+   inipass := inipass + '/vipnetpass.ini';
+
+
   try
-    if (FileExists(inifile)) then
-    begin
-      Inif := TINIFile.Create(inifile);
-
-    end
-    else
-    begin
-      if not DirectoryExists(ExtractFileDir(inifile)) then
-        CreateDir(ExtractFileDir(inifile));
-      AssignFile(f, inifile);
-      rewrite(f);
-      closefile(f);
-      Inif := TINIFile.Create(inifile);
-    end;
-
-
     //check vipnet ini file
     if (FileExists(inipass)) then
     begin
