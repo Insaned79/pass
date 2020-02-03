@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 566
+  Left = 1015
   Height = 294
-  Top = 213
+  Top = 367
   Width = 427
   BorderStyle = bsSingle
   Caption = 'Insaned password generator'
@@ -204,6 +204,7 @@ object MainForm: TMainForm
     ClientHeight = 94
     ClientWidth = 427
     TabOrder = 1
+    OnClick = Panel1Click
     object GenerateButton: TLabel
       Cursor = crHandPoint
       Left = 9

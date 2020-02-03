@@ -40,6 +40,7 @@ type
     procedure GenerateButtonClick(Sender: TObject);
     procedure Label4Click(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
     procedure SiteChange(Sender: TObject);
     procedure TabSheet2ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: boolean);
@@ -61,6 +62,7 @@ var
   word2_mass:TStringList;
   word3_mass:TStringList;
   phase_count:Integer;
+  vipnet_loaded:Boolean;
 implementation
 
 {$R *.lfm}
@@ -84,6 +86,9 @@ begin
 
 
     Result:=L;
+
+
+
 end;
 
 function ReplaceRusToLat(const RusChar: String): String;
@@ -188,6 +193,71 @@ begin
 
 end;
 
+procedure load_vipnet();
+var
+  inifile: string;
+  inipass: string;
+  f: textfile;
+  fp: textfile;
+  digit:String;
+  word1:String;
+  word2:String;
+  word3:String;
+  i:Integer;
+  delemiter:TSysCharSet;
+  a: string;
+begin
+
+  inipass := GetCurrentDir();
+  inipass := inipass + '/vipnetpass.ini';
+  try
+    if (FileExists(inifile)) then
+    begin
+      Inif := TINIFile.Create(inifile);
+
+    end
+    else
+    begin
+      if not DirectoryExists(ExtractFileDir(inifile)) then
+        CreateDir(ExtractFileDir(inifile));
+      AssignFile(f, inifile);
+      rewrite(f);
+      closefile(f);
+      Inif := TINIFile.Create(inifile);
+    end;
+
+
+    //check vipnet ini file
+    if (FileExists(inipass)) then
+    begin
+      Inif2 := TINIFile.Create(inipass);
+
+    end
+    else
+    begin
+      if not DirectoryExists(ExtractFileDir(inipass)) then
+        CreateDir(ExtractFileDir(inipass));
+      AssignFile(fp, inipass);
+      rewrite(fp);
+      closefile(fp);
+      Inif2 := TINIFile.Create(inipass);
+    end;
+    digit := Inif2.ReadString('main', 'digit','');
+    word1 := Inif2.ReadString('main', 'word1','');
+    word2 := Inif2.ReadString('main', 'word2','');
+    word3 := Inif2.ReadString('main', 'word3','');
+
+    delemiter := [','];
+    digit_mass := SplitString(digit, delemiter);
+    word1_mass := SplitString(word1,delemiter);
+    word2_mass := SplitString(word2,delemiter);
+    word3_mass := SplitString(word3,delemiter);
+    vipnet_loaded:=True;
+  except
+  end;
+
+end;
+
 procedure TMainForm.FormCreate(Sender: TObject);
 
 
@@ -209,13 +279,17 @@ begin
   edit2.Text := '';
   mainform.PageControl1.ActivePageIndex := 0;
 
+
+  vipnet_loaded:=False;
+
   //inifile:=ExtractFileDir(paramstr(0));
   inifile := GetAppConfigDir(False);
   inifile := inifile + 'settings.ini';
-  //inipass := GetAppConfigDir(False);// vipnet password
-  inipass := GetCurrentDir();
-  //inipass := '/home/user1/Desktop/pass_t/pass/';//GetAppConfigDir(False);
-  inipass := inipass + '/vipnetpass.ini';
+
+  ////inipass := GetAppConfigDir(False);// vipnet password
+  //inipass := GetCurrentDir();
+  ////inipass := '/home/user1/Desktop/pass_t/pass/';//GetAppConfigDir(False);
+  //inipass := inipass + '/vipnetpass.ini';
   try
     if (FileExists(inifile)) then
     begin
@@ -237,31 +311,31 @@ begin
     togglebox1.Checked := inif.ReadBool('Main', 'Asterisk', True);
     mainform.ToggleBox1Change(nil);
 
-    //check vipnet ini file
-    if (FileExists(inipass)) then
-    begin
-      Inif2 := TINIFile.Create(inipass);
-      //Writeln(INiF.ReadString('s1','Key1',''));
-    end
-    else
-    begin
-      if not DirectoryExists(ExtractFileDir(inipass)) then
-        CreateDir(ExtractFileDir(inipass));
-      AssignFile(fp, inipass);
-      rewrite(fp);
-      closefile(fp);
-      Inif2 := TINIFile.Create(inipass);
-    end;
-    digit := Inif2.ReadString('main', 'digit','');
-    word1 := Inif2.ReadString('main', 'word1','');
-    word2 := Inif2.ReadString('main', 'word2','');
-    word3 := Inif2.ReadString('main', 'word3','');
-
-    delemiter := [','];
-    digit_mass := SplitString(digit, delemiter);
-    word1_mass := SplitString(word1,delemiter);
-    word2_mass := SplitString(word2,delemiter);
-    word3_mass := SplitString(word3,delemiter);
+    ////check vipnet ini file
+    //if (FileExists(inipass)) then
+    //begin
+    //  Inif2 := TINIFile.Create(inipass);
+    //  //Writeln(INiF.ReadString('s1','Key1',''));
+    //end
+    //else
+    //begin
+    //  if not DirectoryExists(ExtractFileDir(inipass)) then
+    //    CreateDir(ExtractFileDir(inipass));
+    //  AssignFile(fp, inipass);
+    //  rewrite(fp);
+    //  closefile(fp);
+    //  Inif2 := TINIFile.Create(inipass);
+    //end;
+    //digit := Inif2.ReadString('main', 'digit','');
+    //word1 := Inif2.ReadString('main', 'word1','');
+    //word2 := Inif2.ReadString('main', 'word2','');
+    //word3 := Inif2.ReadString('main', 'word3','');
+    //
+    //delemiter := [','];
+    //digit_mass := SplitString(digit, delemiter);
+    //word1_mass := SplitString(word1,delemiter);
+    //word2_mass := SplitString(word2,delemiter);
+    //word3_mass := SplitString(word3,delemiter);
 
   except
   end;
@@ -310,7 +384,15 @@ begin
   end;
   // Vipnet way
   2: begin
-
+       if not vipnet_loaded then
+       begin
+            MainForm.Cursor:=CrHourGlass;
+            GenerateButton.Cursor:=crHourGlass;
+            application.ProcessMessages;
+            load_vipnet();
+            MainForm.Cursor:=CrDefault;
+            GenerateButton.Cursor:=crHandPoint;
+       end;
        d1:=Random(phase_count);
        w1:=Random(phase_count);
        w2:=Random(phase_count);
@@ -330,6 +412,11 @@ begin
 end;
 
 procedure TMainForm.PageControl1Change(Sender: TObject);
+begin
+
+end;
+
+procedure TMainForm.Panel1Click(Sender: TObject);
 begin
 
 end;
