@@ -16,22 +16,29 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    Button4: TButton;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
     Edit1: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
     Edit4: TEdit;
+    Edit5: TEdit;
     ExitButton: TLabel;
     FloatSpinEdit1: TFloatSpinEdit;
+    FloatSpinEdit2: TFloatSpinEdit;
     GenerateButton: TLabel;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
+    Label4: TLabel;
     Master: TLabeledEdit;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
     Site: TLabeledEdit;
     TabSheet3: TTabSheet;
+    TabSheet4: TTabSheet;
     ToggleBox1: TToggleBox;
     username: TLabeledEdit;
     PageControl1: TPageControl;
@@ -41,8 +48,12 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure CheckBox1Change(Sender: TObject);
+    procedure CheckBox2Change(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure FloatSpinEdit1Change(Sender: TObject);
+    procedure FloatSpinEdit2Change(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure ExitButtonClick(Sender: TObject);
@@ -193,6 +204,22 @@ begin
    Clipboard.AsText := edit3.text;
 end;
 
+procedure TMainForm.Button4Click(Sender: TObject);
+begin
+    Clipboard.AsText := edit5.text;
+end;
+
+procedure TMainForm.CheckBox1Change(Sender: TObject);
+begin
+    inif.WriteBool('Main', 'Numbers', CheckBox1.Checked);
+
+end;
+
+procedure TMainForm.CheckBox2Change(Sender: TObject);
+begin
+  inif.WriteBool('Main', 'Symbols', CheckBox2.Checked);
+end;
+
 procedure TMainForm.Edit1Change(Sender: TObject);
 begin
 
@@ -201,6 +228,11 @@ end;
 procedure TMainForm.FloatSpinEdit1Change(Sender: TObject);
 begin
   inif.WriteInteger('Main', 'Length', round(floatspinedit1.Value));
+end;
+
+procedure TMainForm.FloatSpinEdit2Change(Sender: TObject);
+begin
+  inif.WriteInteger('Main', 'Simple_Length', round(floatspinedit2.Value));
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -306,7 +338,10 @@ begin
     site.Text := inif.ReadString('Main', 'Site', '');
     username.Text := inif.ReadString('Main', 'Username', '');
     floatspinedit1.Value := inif.ReadInteger('Main', 'Length', 2);
+    floatspinedit2.Value := inif.ReadInteger('Main', 'Simple_Length', 12);
     togglebox1.Checked := inif.ReadBool('Main', 'Asterisk', True);
+    CheckBox1.Checked := inif.ReadBool('Main', 'Numbers', True);
+    CheckBox2.Checked := inif.ReadBool('Main', 'Symbols', True);
     mainform.PageControl1.TabIndex := inif.ReadInteger('Main', 'Mode', 0);
     mainform.ToggleBox1Change(nil);
 
@@ -384,7 +419,17 @@ begin
        passw:= UTF8Copy(word1_mass[w1],1,3) + UTF8Copy(word2_mass[w2],1,3) + UTF8Copy(word3_mass[w3],1,3);
        passw:=RusToLat(passw);
        Edit3.Text:=digit_mass[d1]+passw;
-  end;
+     end;
+  3: begin
+          s:='QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm';
+          if checkbox1.Checked then s:=s+'1234567890';
+          if checkbox2.Checked then s:=s+'~!@#$%^&*()_+=<>?';
+          edit5.text:='';
+          for i:=1 to round(FloatSpinEdit2.Value) do
+          begin
+               edit5.Text:=edit5.Text+s[Random(length(s))+1];
+          end;
+     end;
   end;
 end;
 
