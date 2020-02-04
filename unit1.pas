@@ -42,6 +42,7 @@ type
     procedure ExitButtonClick(Sender: TObject);
     procedure GenerateButtonClick(Sender: TObject);
     procedure Label4Click(Sender: TObject);
+    procedure MasterChange(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
     procedure Panel1Click(Sender: TObject);
     procedure SiteChange(Sender: TObject);
@@ -310,6 +311,13 @@ begin
   halt(0);
 end;
 
+
+function create_password_from_master (master,site,username: string) : string;
+
+begin
+  create_password_from_master := Get_md5hash(trim(master)+trim(utf8uppercase(site))+trim(utf8uppercase(username)))
+end;
+
 procedure TMainForm.GenerateButtonClick(Sender: TObject);
 var
   sep, gl, sl, s,passw,ruspassw: string;
@@ -340,9 +348,9 @@ begin
   end;
   //from master password generation
   1: begin
-      s := trim(master.Text) + trim(utf8uppercase(site.Text)) +
-      trim(utf8uppercase(username.Text));
-      edit2.Text := Get_md5hash(s);
+      //s := trim(master.Text) + trim(utf8uppercase(site.Text)) + trim(utf8uppercase(username.Text));
+      //edit2.Text := Get_md5hash(s);
+      Edit2.Text:= create_password_from_master(master.text,site.text,username.text);
 
   end;
   // Vipnet way
@@ -369,9 +377,16 @@ begin
   end;
 end;
 
+
+
 procedure TMainForm.Label4Click(Sender: TObject);
 begin
 
+end;
+
+procedure TMainForm.MasterChange(Sender: TObject);
+begin
+  Edit2.Text:= create_password_from_master(master.text,site.text,username.text);
 end;
 
 procedure TMainForm.PageControl1Change(Sender: TObject);

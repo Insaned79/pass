@@ -87,6 +87,7 @@ object MainForm: TMainForm
         LabelPosition = lpLeft
         PasswordChar = '*'
         TabOrder = 0
+        OnChange = MasterChange
       end
       object Site: TLabeledEdit
         Left = 107
@@ -99,7 +100,7 @@ object MainForm: TMainForm
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
         TabOrder = 1
-        OnChange = SiteChange
+        OnChange = MasterChange
       end
       object username: TLabeledEdit
         Left = 107
@@ -112,7 +113,7 @@ object MainForm: TMainForm
         EditLabel.ParentColor = False
         LabelPosition = lpLeft
         TabOrder = 2
-        OnChange = usernameChange
+        OnChange = MasterChange
       end
       object Edit2: TEdit
         Left = 1
