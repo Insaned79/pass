@@ -271,19 +271,16 @@ begin
 
   vipnet_loaded:=False;
 
-  //inifile:=ExtractFileDir(paramstr(0));
+
   inifile := GetAppConfigDir(False);
   inifile := inifile + 'settings.ini';
 
-  ////inipass := GetAppConfigDir(False);// vipnet password
-  //inipass := GetCurrentDir();
-  ////inipass := '/home/user1/Desktop/pass_t/pass/';//GetAppConfigDir(False);
-  //inipass := inipass + '/vipnetpass.ini';
+
   try
     if (FileExists(inifile)) then
     begin
       Inif := TINIFile.Create(inifile);
-      //Writeln(INiF.ReadString('s1','Key1',''));
+
     end
     else
     begin
@@ -298,33 +295,10 @@ begin
     username.Text := inif.ReadString('Main', 'Username', '');
     floatspinedit1.Value := inif.ReadInteger('Main', 'Length', 2);
     togglebox1.Checked := inif.ReadBool('Main', 'Asterisk', True);
+    mainform.PageControl1.TabIndex := inif.ReadInteger('Main', 'Mode', 0);
     mainform.ToggleBox1Change(nil);
 
-    ////check vipnet ini file
-    //if (FileExists(inipass)) then
-    //begin
-    //  Inif2 := TINIFile.Create(inipass);
-    //  //Writeln(INiF.ReadString('s1','Key1',''));
-    //end
-    //else
-    //begin
-    //  if not DirectoryExists(ExtractFileDir(inipass)) then
-    //    CreateDir(ExtractFileDir(inipass));
-    //  AssignFile(fp, inipass);
-    //  rewrite(fp);
-    //  closefile(fp);
-    //  Inif2 := TINIFile.Create(inipass);
-    //end;
-    //digit := Inif2.ReadString('main', 'digit','');
-    //word1 := Inif2.ReadString('main', 'word1','');
-    //word2 := Inif2.ReadString('main', 'word2','');
-    //word3 := Inif2.ReadString('main', 'word3','');
-    //
-    //delemiter := [','];
-    //digit_mass := SplitString(digit, delemiter);
-    //word1_mass := SplitString(word1,delemiter);
-    //word2_mass := SplitString(word2,delemiter);
-    //word3_mass := SplitString(word3,delemiter);
+
 
   except
   end;
@@ -402,7 +376,7 @@ end;
 
 procedure TMainForm.PageControl1Change(Sender: TObject);
 begin
-
+  inif.WriteInteger('Main', 'Mode', mainform.PageControl1.TabIndex);
 end;
 
 procedure TMainForm.Panel1Click(Sender: TObject);
