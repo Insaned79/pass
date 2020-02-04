@@ -24,6 +24,9 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Master: TLabeledEdit;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
     Site: TLabeledEdit;
     TabSheet3: TTabSheet;
     ToggleBox1: TToggleBox;

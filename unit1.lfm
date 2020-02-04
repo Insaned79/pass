@@ -1,11 +1,11 @@
 object MainForm: TMainForm
   Left = 1015
-  Height = 294
+  Height = 282
   Top = 367
   Width = 427
   BorderStyle = bsSingle
   Caption = 'Insaned password generator'
-  ClientHeight = 294
+  ClientHeight = 282
   ClientWidth = 427
   Color = clForm
   DragMode = dmAutomatic
@@ -13,15 +13,15 @@ object MainForm: TMainForm
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.8.2.0'
+  LCLVersion = '2.0.6.0'
   object PageControl1: TPageControl
     Left = 0
     Height = 200
     Top = 0
     Width = 427
-    ActivePage = TabSheet3
+    ActivePage = TabSheet1
     Align = alTop
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
@@ -33,6 +33,7 @@ object MainForm: TMainForm
         Height = 32
         Top = 24
         Width = 376
+        Color = clForm
         Font.Color = clWindowText
         Font.Height = -19
         ParentFont = False
@@ -59,7 +60,6 @@ object MainForm: TMainForm
         DecimalPlaces = 0
         Font.Color = clWindowText
         Font.Height = -19
-        Increment = 1
         MaxValue = 5
         MinValue = 1
         OnChange = FloatSpinEdit1Change
@@ -80,14 +80,7 @@ object MainForm: TMainForm
         Top = 10
         Width = 229
         EchoMode = emPassword
-        EditLabel.AnchorSideTop.Control = Master
-        EditLabel.AnchorSideTop.Side = asrCenter
-        EditLabel.AnchorSideRight.Control = Master
-        EditLabel.AnchorSideBottom.Control = Master
-        EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 25
         EditLabel.Height = 16
-        EditLabel.Top = 15
         EditLabel.Width = 106
         EditLabel.Caption = 'Master password:'
         EditLabel.ParentColor = False
@@ -100,14 +93,7 @@ object MainForm: TMainForm
         Height = 26
         Top = 42
         Width = 256
-        EditLabel.AnchorSideTop.Control = Site
-        EditLabel.AnchorSideTop.Side = asrCenter
-        EditLabel.AnchorSideRight.Control = Site
-        EditLabel.AnchorSideBottom.Control = Site
-        EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 79
         EditLabel.Height = 16
-        EditLabel.Top = 47
         EditLabel.Width = 25
         EditLabel.Caption = 'Site:'
         EditLabel.ParentColor = False
@@ -120,14 +106,7 @@ object MainForm: TMainForm
         Height = 26
         Top = 74
         Width = 256
-        EditLabel.AnchorSideTop.Control = username
-        EditLabel.AnchorSideTop.Side = asrCenter
-        EditLabel.AnchorSideRight.Control = username
-        EditLabel.AnchorSideBottom.Control = username
-        EditLabel.AnchorSideBottom.Side = asrBottom
-        EditLabel.Left = 41
         EditLabel.Height = 16
-        EditLabel.Top = 79
         EditLabel.Width = 63
         EditLabel.Caption = 'Username:'
         EditLabel.ParentColor = False
@@ -140,6 +119,7 @@ object MainForm: TMainForm
         Height = 32
         Top = 120
         Width = 375
+        Color = clForm
         Font.Color = clWindowText
         Font.Height = -19
         ParentFont = False
@@ -166,6 +146,7 @@ object MainForm: TMainForm
         Height = 26
         Top = 83
         Width = 144
+        Color = clForm
         TabOrder = 0
       end
       object Edit4: TEdit
@@ -173,7 +154,7 @@ object MainForm: TMainForm
         Height = 26
         Top = 27
         Width = 376
-        Color = clScrollBar
+        Color = clForm
         ReadOnly = True
         TabOrder = 1
       end
@@ -197,41 +178,81 @@ object MainForm: TMainForm
   end
   object Panel1: TPanel
     Left = 0
-    Height = 94
+    Height = 82
     Top = 200
     Width = 427
     Align = alClient
-    ClientHeight = 94
+    ClientHeight = 82
     ClientWidth = 427
     TabOrder = 1
     OnClick = Panel1Click
-    object GenerateButton: TLabel
-      Cursor = crHandPoint
-      Left = 9
-      Height = 22
-      Top = 25
-      Width = 84
-      Caption = 'Generate'
-      Font.Color = clGreen
-      Font.Height = -19
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      OnClick = GenerateButtonClick
+    object Panel2: TPanel
+      Left = 1
+      Height = 80
+      Top = 1
+      Width = 247
+      Align = alClient
+      ClientHeight = 80
+      ClientWidth = 247
+      TabOrder = 0
+      object GenerateButton: TLabel
+        Cursor = crHandPoint
+        Left = 1
+        Height = 78
+        Top = 1
+        Width = 245
+        Align = alClient
+        Alignment = taCenter
+        AutoSize = False
+        Caption = ' Generate '
+        Font.Color = clGreen
+        Font.Height = 41
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        Layout = tlCenter
+        ParentColor = False
+        ParentFont = False
+        OnClick = GenerateButtonClick
+        OptimalFill = True
+      end
     end
-    object ExitButton: TLabel
-      Cursor = crHandPoint
-      Left = 323
-      Height = 22
-      Top = 25
-      Width = 36
-      Caption = 'Exit'
-      Font.Color = clRed
-      Font.Height = -19
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      OnClick = ExitButtonClick
+    object Panel3: TPanel
+      Left = 296
+      Height = 80
+      Top = 1
+      Width = 130
+      Align = alRight
+      ClientHeight = 80
+      ClientWidth = 130
+      TabOrder = 1
+      object ExitButton: TLabel
+        Cursor = crHandPoint
+        Left = 1
+        Height = 78
+        Top = 1
+        Width = 128
+        Align = alClient
+        Alignment = taCenter
+        AutoSize = False
+        Caption = ' Exit '
+        Font.Color = clRed
+        Font.Height = 44
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        Layout = tlCenter
+        ParentColor = False
+        ParentFont = False
+        OnClick = ExitButtonClick
+        OptimalFill = True
+      end
+    end
+    object Panel4: TPanel
+      Left = 248
+      Height = 80
+      Top = 1
+      Width = 48
+      Align = alRight
+      TabOrder = 2
     end
   end
 end
