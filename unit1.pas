@@ -6,13 +6,16 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Spin, ComCtrls, ExtCtrls, md5, Types, LazUTF8, INIFiles, StrUtils ;
+  Spin, ComCtrls, ExtCtrls, md5, Types, LazUTF8, INIFiles, StrUtils, Clipbrd ;
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
     Edit1: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
@@ -36,6 +39,9 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
     procedure FloatSpinEdit1Change(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -171,20 +177,25 @@ end;
 
 
 procedure TMainForm.Button1Click(Sender: TObject);
-var
-  d1,w1,w2,w3: Integer;
-  passw,ruspassw: String;
+
+
 begin
-  Randomize;
-  d1:=Random(phase_count);
-  w1:=Random(phase_count);
-  w2:=Random(phase_count);
-  w3:=Random(phase_count);
-  ruspassw:=  digit_mass[d1] + ' ' + word1_mass[w1] + ' ' + word2_mass[w2] + ' ' + word3_mass[w3];
-  Edit4.Text:=  ruspassw;
-  passw:= UTF8Copy(word1_mass[w1],1,3) + UTF8Copy(word2_mass[w2],1,3) + UTF8Copy(word3_mass[w3],1,3);
-  passw:=RusToLat(passw);
-  Edit3.Text:=digit_mass[d1]+passw;
+  Clipboard.AsText := edit2.text;
+end;
+
+procedure TMainForm.Button2Click(Sender: TObject);
+begin
+   Clipboard.AsText := edit1.text;
+end;
+
+procedure TMainForm.Button3Click(Sender: TObject);
+begin
+   Clipboard.AsText := edit3.text;
+end;
+
+procedure TMainForm.Edit1Change(Sender: TObject);
+begin
+
 end;
 
 procedure TMainForm.FloatSpinEdit1Change(Sender: TObject);

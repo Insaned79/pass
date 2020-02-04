@@ -2,11 +2,11 @@ object MainForm: TMainForm
   Left = 1015
   Height = 282
   Top = 367
-  Width = 427
+  Width = 464
   BorderStyle = bsSingle
   Caption = 'Insaned password generator'
   ClientHeight = 282
-  ClientWidth = 427
+  ClientWidth = 464
   Color = clForm
   DragMode = dmAutomatic
   Font.Color = clBlack
@@ -18,16 +18,16 @@ object MainForm: TMainForm
     Left = 0
     Height = 200
     Top = 0
-    Width = 427
-    ActivePage = TabSheet2
+    Width = 464
+    ActivePage = TabSheet1
     Align = alTop
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 0
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Phonetic'
       ClientHeight = 166
-      ClientWidth = 421
+      ClientWidth = 458
       object Edit1: TEdit
         Left = 0
         Height = 32
@@ -36,6 +36,7 @@ object MainForm: TMainForm
         Color = clForm
         Font.Color = clWindowText
         Font.Height = -19
+        OnChange = Edit1Change
         ParentFont = False
         ReadOnly = True
         TabStop = False
@@ -68,11 +69,21 @@ object MainForm: TMainForm
         TabOrder = 1
         Value = 2
       end
+      object Button2: TButton
+        Cursor = crHandPoint
+        Left = 391
+        Height = 25
+        Top = 27
+        Width = 62
+        Caption = 'Copy'
+        OnClick = Button2Click
+        TabOrder = 2
+      end
     end
     object TabSheet2: TTabSheet
       Caption = 'From master'
       ClientHeight = 166
-      ClientWidth = 421
+      ClientWidth = 458
       OnContextPopup = TabSheet2ContextPopup
       object Master: TLabeledEdit
         Left = 134
@@ -119,7 +130,7 @@ object MainForm: TMainForm
         Left = 1
         Height = 32
         Top = 120
-        Width = 375
+        Width = 391
         Color = clForm
         Font.Color = clWindowText
         Font.Height = -19
@@ -137,11 +148,21 @@ object MainForm: TMainForm
         OnChange = ToggleBox1Change
         TabOrder = 4
       end
+      object Button1: TButton
+        Cursor = crHandPoint
+        Left = 395
+        Height = 25
+        Top = 123
+        Width = 62
+        Caption = 'Copy'
+        OnClick = Button1Click
+        TabOrder = 5
+      end
     end
     object TabSheet3: TTabSheet
       Caption = 'VipNet Password Generator'
       ClientHeight = 166
-      ClientWidth = 421
+      ClientWidth = 458
       object Edit3: TEdit
         Left = 14
         Height = 26
@@ -175,33 +196,43 @@ object MainForm: TMainForm
         Caption = 'Password (first 3 letter in EN)'
         ParentColor = False
       end
+      object Button3: TButton
+        Cursor = crHandPoint
+        Left = 168
+        Height = 25
+        Top = 83
+        Width = 62
+        Caption = 'Copy'
+        OnClick = Button3Click
+        TabOrder = 2
+      end
     end
   end
   object Panel1: TPanel
     Left = 0
     Height = 82
     Top = 200
-    Width = 427
+    Width = 464
     Align = alClient
     ClientHeight = 82
-    ClientWidth = 427
+    ClientWidth = 464
     TabOrder = 1
     OnClick = Panel1Click
     object Panel2: TPanel
       Left = 1
       Height = 80
       Top = 1
-      Width = 247
+      Width = 284
       Align = alClient
       ClientHeight = 80
-      ClientWidth = 247
+      ClientWidth = 284
       TabOrder = 0
       object GenerateButton: TLabel
         Cursor = crHandPoint
         Left = 1
         Height = 78
         Top = 1
-        Width = 245
+        Width = 282
         Align = alClient
         Alignment = taCenter
         AutoSize = False
@@ -218,7 +249,7 @@ object MainForm: TMainForm
       end
     end
     object Panel3: TPanel
-      Left = 296
+      Left = 333
       Height = 80
       Top = 1
       Width = 130
@@ -248,7 +279,7 @@ object MainForm: TMainForm
       end
     end
     object Panel4: TPanel
-      Left = 248
+      Left = 285
       Height = 80
       Top = 1
       Width = 48
